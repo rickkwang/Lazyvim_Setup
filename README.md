@@ -1,101 +1,64 @@
 # LazyVim Setup
 
-This is my personal Neovim configuration based on [LazyVim](https://github.com/LazyVim/LazyVim).
+My personal Neovim configuration based on [LazyVim](https://github.com/LazyVim/LazyVim), tuned for a transparent dark UI, fast navigation, and a practical set of language extras.
 
-It is tuned for a transparent dark UI, fast navigation, and a small set of practical extras.
+## Features
 
-## Highlights
+- **Theme:** `tokyonight` (storm style) with transparent backgrounds
+- **Statusline:** `lualine.nvim` with transparent middle sections and arrow separators
+- **File navigation:** `neo-tree` + `mini-files`
+- **Tools:** Telescope, outline, treesitter-context
+- **Languages:** Python, C/C++ (clangd), CMake, Markdown, Git, Svelte
 
-- Default colorscheme: `tokyonight storm`
-- Transparent editor background
-- Official `lualine` statusline with a transparent middle section
-- `neo-tree` and `mini-files` enabled
-- Telescope, outline, and treesitter context enabled
-- Support for Python, C/C++, CMake, Markdown, Git, and Svelte
-- Custom plugin overrides for UI consistency
+## Repository Structure
 
-## What This Repo Contains
+```
+.
+├── init.lua
+├── lazyvim.json                  # LazyVim extras configuration
+├── lua/
+│   ├── config/
+│   │   ├── options.lua           # Core Neovim options
+│   │   ├── keymaps.lua           # Key mappings
+│   │   ├── autocmds.lua          # Auto commands
+│   │   └── lazy.lua              # Lazy.nvim bootstrap
+│   └── plugins/
+│       ├── theme.lua             # Tokyonight + highlight overrides
+│       ├── statusline.lua        # Lualine configuration
+│       ├── dashboard.lua         # Dashboard-nvim
+│       └── ...                   # Other plugin overrides
+└── local-plugins/
+    └── witch-line/               # Local statusline plugin (inactive, kept for reference)
+```
 
-- `lua/config/`
-  - Core Neovim options, keymaps, autocmds, and startup helpers
-- `lua/plugins/`
-  - LazyVim plugin overrides and local additions
-- `local-plugins/witch-line/`
-  - A local copy of `witch-line` kept in this repo for reference and experimentation
+## LazyVim Extras
 
-## Current UI Setup
-
-### Theme
-
-- Primary theme: `tokyonight.nvim`
-- Style: `storm`
-- Transparent backgrounds enabled
-- Extra highlight overrides for:
-  - floating windows
-  - Telescope
-  - popup menus
-  - tabline
-  - statusline
-  - Rust and TSX syntax accents
-
-### Statusline
-
-- Uses official `nvim-lualine/lualine.nvim`
-- Global statusline enabled
-- Middle sections are transparent
-- Arrow separators are kept
-
-## LazyVim Extras Enabled
-
-From `lazyvim.json`:
-
-- `mini-files`
-- `neo-tree`
-- `outline`
-- `telescope`
-- `clangd`
-- `cmake`
-- `git`
-- `markdown`
-- `python`
-- `svelte`
-- `dashboard-nvim`
-- `treesitter-context`
-
-## Local Plugin
-
-I keep a local copy of `witch-line` in this repo for testing and comparison.
-
-- It is not the active statusline right now
-- The active statusline is `lualine`
+| Extra | Purpose |
+|---|---|
+| `neo-tree` | File tree sidebar |
+| `mini-files` | Lightweight inline file browser |
+| `telescope` | Fuzzy finder |
+| `outline` | Symbol outline panel |
+| `treesitter-context` | Sticky context header |
+| `clangd` | C/C++ LSP |
+| `cmake` | CMake support |
+| `python` | Python LSP + tooling |
+| `svelte` | Svelte support |
+| `git` | Git integration |
+| `markdown` | Markdown preview + extras |
+| `dashboard-nvim` | Startup dashboard |
 
 ## Installation
 
 ```bash
 git clone https://github.com/rickkwang/Lazyvim_Setup ~/.config/nvim
-```
-
-Then start Neovim:
-
-```bash
 nvim
 ```
 
-Lazy.nvim will handle plugin installation on first launch.
-
-## Useful Files
-
-- [init.lua](./init.lua)
-- [lua/config/options.lua](./lua/config/options.lua)
-- [lua/config/keymaps.lua](./lua/config/keymaps.lua)
-- [lua/config/autocmds.lua](./lua/config/autocmds.lua)
-- [lua/plugins/theme.lua](./lua/plugins/theme.lua)
-- [lua/plugins/statusline.lua](./lua/plugins/statusline.lua)
-- [lua/plugins/dashboard.lua](./lua/plugins/dashboard.lua)
-- [lazyvim.json](./lazyvim.json)
+Lazy.nvim will install all plugins on first launch.
 
 ## Notes
 
-- This repo is a working personal setup, not a minimal starter template.
-- Some plugin files are intentionally customized for my workflow.
-- If you want to reuse it, start from `lua/plugins/` and adjust the theme and UI overrides first.
+- This is a personal working setup, not a minimal starter template.
+- To adapt it, start with `lua/plugins/theme.lua` and `lua/plugins/statusline.lua`.
+- `local-plugins/witch-line/` is not the active statusline — `lualine` is.
